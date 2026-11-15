@@ -1,0 +1,384 @@
+<!doctype html><html lang="el"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>body{margin:0}img{max-width:100%}</style></head><body>
+<title>Μπάρα Καπυμπάρα</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&family=Manrope:wght@500;700;800&display=swap">
+<style>
+/* Layout: phone-first single column; every block is a die-cut "sticker" (white rim, solid drop) on a mango ground. */
+:root{
+  --mango:#ffc93c; --jungle:#0e9f6e; --pink:#ff4f9a; --pond:#2aa7e0; --grape:#7a3cff; --orange:#ff7a1a;
+  --ink:#2b1a3d; --paper:#fffaf0; --white:#ffffff; --soft:#5b4a6e; --error:#c4162f;
+  --display:"Comfortaa","Trebuchet MS","Segoe UI",sans-serif;
+  --body:"Manrope","Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --rim:4px solid var(--white); --drop:0 6px 0 var(--ink);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{height:auto}
+body{background:var(--mango);color:var(--ink);font-family:var(--body);font-size:1rem;line-height:1.5;font-weight:500;
+  background-image:radial-gradient(circle at 12% 8%,#ffe07a 0 90px,transparent 91px),radial-gradient(circle at 90% 30%,#ffb020 0 120px,transparent 121px),radial-gradient(circle at 10% 85%,#ffb020 0 100px,transparent 101px)}
+.wrap{max-width:720px;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:22px}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.15;margin:0;text-wrap:balance}
+p{margin:0}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:4px solid var(--grape);outline-offset:3px}
+
+.sticker{border:var(--rim);border-radius:28px;box-shadow:var(--drop);outline:2px solid var(--ink)}
+.sticker:focus-visible{outline:4px solid var(--grape);outline-offset:3px}
+
+/* hero */
+.hero{background:var(--jungle);color:var(--white);padding:22px 20px 0;display:flex;flex-direction:column;align-items:center;gap:6px;overflow:hidden;position:relative}
+.hero .eyebrow{font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem;background:var(--ink);color:var(--mango);padding:6px 14px;border-radius:99px}
+.slogan{font-size:clamp(2rem,9vw,3.4rem);text-align:center;margin-top:10px}
+.slogan b{color:var(--mango);font-weight:700;display:inline-block;transform:rotate(-2deg)}
+.slogan i{font-style:normal;color:#ffd1e6}
+.hero svg{width:min(250px,64vw);height:auto;margin-top:6px;margin-bottom:-28px;animation:bob 3.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-7px) rotate(1.5deg)}}
+@media (prefers-reduced-motion:reduce){.hero svg{animation:none}}
+
+/* choices */
+.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.choice{display:flex;flex-direction:column;gap:8px;text-align:left;padding:22px 20px;cursor:pointer;color:var(--white);min-width:0;transition:transform .12s}
+.choice:hover{transform:translateY(-3px) rotate(-.6deg)}
+.choice:active{transform:translateY(3px);box-shadow:0 3px 0 var(--ink)}
+.choice.c1{background:var(--pink)} .choice.c2{background:var(--grape)}
+.choice .num{font-family:var(--display);font-weight:700;font-size:.85rem;background:var(--white);color:var(--ink);align-self:flex-start;padding:4px 12px;border-radius:99px}
+.choice h2{font-size:1.55rem}
+.choice p{font-weight:700;opacity:.95}
+.choice .go{margin-top:6px;font-weight:800;background:var(--mango);color:var(--ink);align-self:flex-start;padding:10px 16px;border-radius:99px;border:2px solid var(--ink)}
+
+.prize{background:var(--paper);padding:18px 20px;display:flex;gap:14px;align-items:center}
+.prize .ten{font-family:var(--display);font-weight:700;font-size:2.6rem;color:var(--orange);line-height:1;flex:none}
+.prize p{font-weight:700}
+
+/* inner views */
+.topbar{display:flex;align-items:center;gap:12px}
+.back{background:var(--white);border:2px solid var(--ink);border-radius:99px;padding:10px 16px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 var(--ink);min-height:44px}
+.topbar h1{font-size:clamp(1.4rem,6vw,2rem)}
+.panel{background:var(--paper);padding:20px;display:flex;flex-direction:column;gap:14px}
+.panel h2{font-size:1.25rem}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;counter-reset:s}
+.steps li{counter-increment:s;display:flex;gap:12px;align-items:flex-start;font-weight:700}
+.steps li::before{content:counter(s);flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:700;color:var(--white);background:var(--pond);border:2px solid var(--ink)}
+.steps li:nth-child(2)::before{background:var(--pink)}
+.steps li:nth-child(3)::before{background:var(--jungle)}
+.steps li:nth-child(4)::before{background:var(--orange)}
+.note{font-size:.9rem;color:var(--soft)}
+.demo{background:var(--ink);color:var(--mango);border-radius:16px;padding:10px 14px;font-size:.88rem;font-weight:700}
+
+.shot{border:3px dashed var(--ink);border-radius:20px;background:var(--white);min-height:190px;display:grid;place-items:center;text-align:center;padding:14px;overflow:hidden;color:var(--soft);font-weight:700}
+.shot img{max-width:100%;max-height:420px;border-radius:12px;display:block}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:12px 18px;border-radius:99px;border:2px solid var(--ink);font-weight:800;cursor:pointer;box-shadow:0 4px 0 var(--ink);background:var(--white);text-align:center}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--ink)}
+.btn.primary{background:var(--pink);color:var(--white)}
+.btn.green{background:var(--jungle);color:var(--white)}
+.btn.yellow{background:var(--mango)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.file{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+label.btn:focus-within{outline:4px solid var(--grape);outline-offset:3px}
+.field{display:flex;flex-direction:column;gap:6px;font-weight:800}
+.field input{min-height:50px;border-radius:16px;border:2px solid var(--ink);padding:10px 14px;background:var(--white);font-weight:500;width:100%}
+.check{display:flex;gap:12px;align-items:flex-start;font-weight:700;font-size:.95rem}
+.check input{width:24px;height:24px;flex:none;margin-top:2px;accent-color:var(--jungle)}
+.err{color:var(--error);font-weight:800}
+.done{background:var(--jungle);color:var(--white)}
+.done h2{font-size:1.5rem}
+.done .demo{background:var(--white);color:var(--ink)}
+
+/* game */
+.stage{padding:10px;display:grid;place-items:center;overflow:hidden;transition:background .2s}
+.stage svg{width:min(330px,82vw);height:auto;display:block}
+.stage[data-bg="jungle"]{background:linear-gradient(#8fe3b0,#0e9f6e)}
+.stage[data-bg="pond"]{background:linear-gradient(#bfe9ff 0 55%,#2aa7e0 55%)}
+.stage[data-bg="sunset"]{background:linear-gradient(#ff7a1a,#ff4f9a 60%,#7a3cff)}
+.stage[data-bg="party"]{background:repeating-conic-gradient(from 0deg at 50% 60%,#ffc93c 0 20deg,#ff4f9a 20deg 40deg,#2aa7e0 40deg 60deg)}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:thin}
+.tab{flex:none;min-height:44px;padding:8px 14px;border-radius:99px;border:2px solid var(--ink);background:var(--white);font-weight:800;cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--ink);color:var(--mango)}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:10px}
+.item{aspect-ratio:1;max-width:100%;border-radius:18px;border:2px solid var(--ink);background:var(--white);cursor:pointer;padding:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:.72rem;font-weight:800;line-height:1.1;min-width:0}
+.item svg{width:100%;flex:1;min-height:0}
+.item .sw{width:100%;flex:1;border-radius:10px;border:2px solid var(--ink)}
+.item[aria-pressed="true"]{background:var(--mango);box-shadow:0 4px 0 var(--ink);transform:translateY(-2px)}
+.foot{text-align:center;font-size:.85rem;font-weight:700;color:var(--ink);opacity:.8}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <clipPath id="shirtClip"><path d="M71.5 205 Q150 186 228.5 205 A95 80 0 0 1 224 300 Q150 318 76 300 A95 80 0 0 1 71.5 205Z"/></clipPath>
+</defs></svg>
+
+<div class="wrap">
+
+  <!-- HOME -->
+  <main id="v-home" class="view" style="display:contents">
+    <section class="hero sticker">
+      <span class="eyebrow">Συλλογή αυτοκόλλητων</span>
+      <h1 class="slogan"><b>Μπάρα</b> για να τρώνε μεγάλα <i>καπυμπάρα</i></h1>
+      <div id="heroCapy"></div>
+    </section>
+
+    <nav class="choices" aria-label="Επιλογές">
+      <button class="choice c1 sticker" data-go="syllogi" id="goCollection">
+        <span class="num">Επιλογή 1</span>
+        <h2>Φωτογράφισε τη συλλογή σου</h2>
+        <p>Γέμισες το κουτί-άλμπουμ με αυτοκόλλητα; Βγάλ' το φωτογραφία και διεκδίκησε θέση στην κλήρωση.</p>
+        <span class="go">Πάμε για κλήρωση →</span>
+      </button>
+      <button class="choice c2 sticker" data-go="paixnidi" id="goGame">
+        <span class="num">Επιλογή 2</span>
+        <h2>Ντύσε το καπυμπάρα</h2>
+        <p>Καπέλα, γυαλιά, κασκόλ και στολές. Φτιάξε το πιο στιλάτο καπυμπάρα της παρέας.</p>
+        <span class="go">Παίξε τώρα →</span>
+      </button>
+    </nav>
+
+    <section class="prize sticker">
+      <span class="ten" id="winnersNum">10</span>
+      <p>τυχεροί με συμπληρωμένη συλλογή θα γνωρίσουν από κοντά αληθινά καπυμπάρα!</p>
+    </section>
+  </main>
+
+  <!-- COLLECTION -->
+  <main id="v-syllogi" class="view" hidden style="display:contents">
+    <div class="topbar"><button class="back" data-go="home" id="back1">← Πίσω</button><h1>Η συλλογή μου</h1></div>
+
+    <section class="panel sticker">
+      <h2>Πώς μπαίνεις στην κλήρωση</h2>
+      <ol class="steps">
+        <li>Κάθε κουτί με μπάρες δημητριακών κρύβει ένα αυτοκόλλητο.</li>
+        <li>Το κουτί είναι και το άλμπουμ σου: κόλλησε πάνω του τα αυτοκόλλητα μέχρι να γεμίσουν όλες οι θέσεις.</li>
+        <li>Βγάλε μια καθαρή φωτογραφία του συμπληρωμένου κουτιού και στείλ' τη μας από εδώ.</li>
+        <li>Ελέγχουμε τη φωτογραφία και, αν η συλλογή είναι πλήρης, μπαίνεις στην κλήρωση για τους <span class="winnersTxt">10</span> τυχερούς.</li>
+      </ol>
+    </section>
+
+    <form class="panel sticker" id="entryForm" novalidate>
+      <h2>Στείλε τη φωτογραφία σου</h2>
+      <div class="shot" id="shot"><span>Εδώ θα εμφανιστεί η φωτογραφία του άλμπουμ σου.<br>Φρόντισε να φαίνονται όλα τα αυτοκόλλητα.</span></div>
+      <div class="row">
+        <label class="btn primary" for="camInput">📷 Βγάλε φωτογραφία<input class="file" type="file" id="camInput" accept="image/*" capture="environment"></label>
+        <label class="btn" for="libInput">Διάλεξε από το κινητό<input class="file" type="file" id="libInput" accept="image/*"></label>
+      </div>
+      <label class="field" for="fName">Όνομα
+        <input id="fName" name="name" autocomplete="name" placeholder="π.χ. Μαρία Π.">
+      </label>
+      <label class="field" for="fContact">Κινητό ή email για να σε βρούμε αν κερδίσεις
+        <input id="fContact" name="contact" autocomplete="email" placeholder="π.χ. 69xxxxxxxx ή onoma@email.gr">
+      </label>
+      <label class="check" for="fConsent"><input type="checkbox" id="fConsent">
+        <span>Είμαι άνω των 18 ή συμπληρώνω τη φόρμα μαζί με γονέα/κηδεμόνα, και συμφωνώ με τους όρους της κλήρωσης.</span></label>
+      <p class="demo">Δοκιμαστική έκδοση: η φωτογραφία και τα στοιχεία σου μένουν στο κινητό σου και δεν αποστέλλονται πουθενά.</p>
+      <p class="err" id="formErr" role="alert" hidden></p>
+      <button class="btn green" type="submit" id="submitBtn">Στείλε τη συμμετοχή</button>
+      <p class="note" id="drawNote"></p>
+    </form>
+
+    <section class="panel sticker done" id="doneBox" hidden>
+      <h2>Έτσι θα μοιάζει η επιβεβαίωση</h2>
+      <p><b id="doneName"></b>, στην τελική έκδοση η φωτογραφία σου θα περιμένει έλεγχο και, μόλις επιβεβαιωθεί ότι η συλλογή είναι συμπληρωμένη, θα μπαίνεις στην κλήρωση.</p>
+      <p class="demo">Δοκιμαστική έκδοση: τίποτα δεν στάλθηκε και δεν έχεις μπει ακόμα σε κλήρωση.</p>
+      <div class="row">
+        <button class="btn yellow" data-go="paixnidi" id="doneGame">Ντύσε ένα καπυμπάρα όσο περιμένεις</button>
+        <button class="btn" id="againBtn" type="button">Νέα υποβολή</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- GAME -->
+  <main id="v-paixnidi" class="view" hidden style="display:contents">
+    <div class="topbar"><button class="back" data-go="home" id="back2">← Πίσω</button><h1>Ντύσε το καπυμπάρα</h1></div>
+    <section class="stage sticker" id="stage" data-bg="jungle"></section>
+    <div class="row">
+      <button class="btn yellow" id="randBtn" type="button">🎲 Τυχαίο ντύσιμο</button>
+      <button class="btn" id="resetBtn" type="button">Από την αρχή</button>
+    </div>
+    <section class="panel sticker">
+      <div class="tabs" id="tabs" role="group" aria-label="Κατηγορίες"></div>
+      <div class="items" id="items"></div>
+    </section>
+  </main>
+
+  <p class="foot">Μπάρα για να τρώνε μεγάλα καπυμπάρα</p>
+</div>
+
+<script>
+/* ====== Ρυθμίσεις καμπάνιας: άλλαξέ τες εδώ ====== */
+const CONFIG = {
+  winners: 10,
+  drawInfo: "Η ημερομηνία της κλήρωσης και οι αναλυτικοί όροι θα ανακοινωθούν από τον διοργανωτή."
+};
+
+/* ====== Υποβολή συμμετοχής ======
+   Το μόνο σημείο που χρειάζεται backend. Αντικατάστησέ το με πραγματική αποστολή
+   (π.χ. fetch POST με FormData: photo, name, contact) όταν στηθεί ο server. */
+async function submitEntry(entry){
+  await new Promise(r => setTimeout(r, 600));
+  return { ok: true, demo: true };
+}
+
+/* ====== Καπυμπάρα ====== */
+const FURS = {
+  kapy:   {name:"Κάπυ",  fur:"#b07a4a", dark:"#855530", muz:"#cf9c6e"},
+  bara:   {name:"Μπάρα", fur:"#dba45e", dark:"#b07a3a", muz:"#efcb95"},
+  moka:   {name:"Μόκα",  fur:"#7d5538", dark:"#573823", muz:"#a07656"}
+};
+const star = (cx,cy,R,r) => { let p=[]; for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5, q=i%2?r:R; p.push((cx+q*Math.cos(a)).toFixed(1)+","+(cy+q*Math.sin(a)).toFixed(1));} return p.join(" "); };
+const heart = (cx,cy,s,fill) => `<path transform="translate(${cx} ${cy}) scale(${s})" d="M0 12 C-26 -6 -12 -24 0 -10 C12 -24 26 -6 0 12Z" fill="${fill}" stroke="#2b1a3d" stroke-width="2"/>`;
+const flower = (x,y,c,r=11) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${c}" stroke="#fff" stroke-width="2"/><circle cx="${x}" cy="${y}" r="${r*0.4}" fill="#ffc93c"/>`;
+const shirt = inner => `<g clip-path="url(#shirtClip)"><rect x="60" y="180" width="180" height="150" fill="#fff"/>${inner}</g>`;
+
+const CATS = [
+  {id:"capy", name:"Καπυμπάρα", none:false, items: Object.entries(FURS).map(([id,f]) => ({id, name:f.name, fur:f}))},
+  {id:"hat", name:"Καπέλα", vb:"70 -8 160 112", items:[
+    {id:"party", name:"Πάρτι", svg:`<path d="M150 4 L112 72 Q150 84 188 72Z" fill="#ff4f9a"/><path d="M132 37 L168 37 M122 56 L178 56" stroke="#ffc93c" stroke-width="7"/><circle cx="150" cy="5" r="10" fill="#ffc93c"/>`},
+    {id:"crown", name:"Στέμμα", svg:`<path d="M108 72 L102 30 L126 50 L150 22 L174 50 L198 30 L192 72 Q150 82 108 72Z" fill="#ffc93c" stroke="#d99400" stroke-width="3" stroke-linejoin="round"/><circle cx="150" cy="60" r="6" fill="#ff4f9a"/><circle cx="124" cy="64" r="5" fill="#2aa7e0"/><circle cx="176" cy="64" r="5" fill="#0e9f6e"/>`},
+    {id:"cowboy", name:"Καουμπόι", svg:`<ellipse cx="150" cy="66" rx="88" ry="13" fill="#8a4b22"/><path d="M110 64 Q108 22 132 26 Q150 34 168 26 Q192 22 190 64Z" fill="#a85c2a"/><path d="M110 55 Q150 66 190 55 L190 64 Q150 75 110 64Z" fill="#ffc93c"/>`},
+    {id:"beanie", name:"Σκούφος", svg:`<path d="M84 92 Q82 34 150 34 Q218 34 216 92 Q150 76 84 92Z" fill="#2aa7e0"/><path d="M82 82 Q150 64 218 82 L218 98 Q150 80 82 98Z" fill="#fff"/><circle cx="150" cy="30" r="13" fill="#fff"/>`},
+    {id:"orange", name:"Πορτοκάλι", svg:`<circle cx="150" cy="46" r="21" fill="#ff8a1f"/><circle cx="143" cy="39" r="5" fill="#ffb866"/><path d="M150 26 Q160 10 176 16 Q168 30 150 26Z" fill="#0e9f6e"/>`},
+    {id:"flowers", name:"Λουλούδια", svg: flower(100,76,"#ff4f9a")+flower(124,66,"#7a3cff")+flower(150,61,"#ff7a1a",13)+flower(176,66,"#2aa7e0")+flower(200,76,"#ff4f9a")}
+  ]},
+  {id:"glasses", name:"Γυαλιά", vb:"78 80 144 64", items:[
+    {id:"sun", name:"Ηλίου", svg:`<rect x="86" y="98" width="52" height="30" rx="12" fill="#1c1c28"/><rect x="162" y="98" width="52" height="30" rx="12" fill="#1c1c28"/><path d="M138 108 Q150 101 162 108" stroke="#1c1c28" stroke-width="5" fill="none"/><path d="M96 106 L108 106 M172 106 L184 106" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".7"/>`},
+    {id:"round", name:"Στρογγυλά", svg:`<circle cx="112" cy="112" r="21" fill="#ffffff55" stroke="#7a3cff" stroke-width="5"/><circle cx="188" cy="112" r="21" fill="#ffffff55" stroke="#7a3cff" stroke-width="5"/><path d="M133 110 Q150 102 167 110" stroke="#7a3cff" stroke-width="5" fill="none"/>`},
+    {id:"hearts", name:"Καρδούλες", svg: heart(112,114,1.05,"#ff4f9ad9")+heart(188,114,1.05,"#ff4f9ad9")+`<path d="M136 108 L164 108" stroke="#2b1a3d" stroke-width="4"/>`},
+    {id:"stars", name:"Αστέρια", svg:`<polygon points="${star(112,112,26,12)}" fill="#ffc93ce6" stroke="#2b1a3d" stroke-width="2"/><polygon points="${star(188,112,26,12)}" fill="#ffc93ce6" stroke="#2b1a3d" stroke-width="2"/><path d="M134 110 L166 110" stroke="#2b1a3d" stroke-width="4"/>`}
+  ]},
+  {id:"neck", name:"Λαιμός", vb:"72 164 156 96", items:[
+    {id:"bow", name:"Παπιγιόν", svg:`<path d="M150 197 L116 179 L116 215Z M150 197 L184 179 L184 215Z" fill="#e63946"/><circle cx="150" cy="197" r="9" fill="#b81f2d"/>`},
+    {id:"scarf", name:"Κασκόλ", svg:`<path d="M178 204 L201 198 L207 248 L185 252Z" fill="#0e9f6e"/><path d="M186 232 L206 228" stroke="#ffc93c" stroke-width="6"/><path d="M88 178 Q150 200 212 178 L214 198 Q150 222 86 198Z" fill="#0e9f6e"/><path d="M118 190 L116 209 M150 196 L150 215 M182 190 L184 209" stroke="#ffc93c" stroke-width="6"/>`},
+    {id:"pearls", name:"Πέρλες", svg: Array.from({length:9},(_,i)=>`<circle cx="${92+i*14.5}" cy="${(184+20*Math.sin(Math.PI*i/8)).toFixed(1)}" r="6.5" fill="#fff" stroke="#c9b8e8" stroke-width="2"/>`).join("")},
+    {id:"medal", name:"Μετάλλιο", svg:`<path d="M118 184 L150 226 L182 184" stroke="#2aa7e0" stroke-width="8" fill="none"/><circle cx="150" cy="234" r="17" fill="#ffc93c" stroke="#d99400" stroke-width="3"/><text x="150" y="241" text-anchor="middle" font-size="19" font-weight="800" fill="#2b1a3d" font-family="Manrope,Arial,sans-serif">1</text>`}
+  ]},
+  {id:"outfit", name:"Ρούχα", vb:"36 176 228 160", items:[
+    {id:"stripes", name:"Ριγέ", svg: shirt(`<path d="M60 214h180M60 240h180M60 266h180M60 292h180" stroke="#ff4f9a" stroke-width="13"/>`)},
+    {id:"jersey", name:"Φανέλα", svg: shirt(`<rect x="60" y="180" width="180" height="150" fill="#0e9f6e"/><text x="150" y="282" text-anchor="middle" font-size="54" font-weight="800" fill="#fff" font-family="Manrope,Arial,sans-serif">10</text>`)},
+    {id:"hawaii", name:"Χαβανέζικο", svg: shirt(`<rect x="60" y="180" width="180" height="150" fill="#ff7a1a"/>`+flower(105,235,"#fff",10)+flower(150,262,"#ffd1e6",12)+flower(196,236,"#fff",10)+flower(112,290,"#ffd1e6",10)+flower(190,290,"#fff",10))},
+    {id:"tutu", name:"Τουτού", svg:`<ellipse cx="150" cy="296" rx="112" ry="26" fill="#ff9ac8"/><ellipse cx="150" cy="288" rx="100" ry="20" fill="#ffc2de"/><path d="M62 280 Q150 300 238 280" stroke="#ff4f9a" stroke-width="7" fill="none"/>`},
+    {id:"cape", name:"Κάπα ήρωα", back:`<path d="M84 192 Q22 262 40 334 Q150 300 260 334 Q278 262 216 192Z" fill="#e63946" stroke="#b81f2d" stroke-width="3"/>`, svg:`<polygon points="${star(150,258,24,11)}" fill="#ffc93c" stroke="#2b1a3d" stroke-width="2"/>`}
+  ]},
+  {id:"hand", name:"Στο χέρι", vb:"176 56 116 216", items:[
+    {id:"bar", name:"Μπάρα", vb:"190 180 90 90", svg:`<g transform="rotate(-24 226 228)"><rect x="214" y="190" width="26" height="62" rx="5" fill="#c98a3c" stroke="#855530" stroke-width="2"/><circle cx="221" cy="200" r="3" fill="#855530"/><circle cx="232" cy="208" r="3" fill="#fff3d6"/><circle cx="224" cy="216" r="3" fill="#e63946"/><rect x="211" y="222" width="32" height="34" rx="4" fill="#ff4f9a" stroke="#2b1a3d" stroke-width="2"/><path d="M211 232h32" stroke="#ffc93c" stroke-width="5"/></g>`},
+    {id:"balloon", name:"Μπαλόνι", svg:`<path d="M216 244 Q236 190 250 128" stroke="#2b1a3d" stroke-width="2" fill="none"/><ellipse cx="252" cy="98" rx="25" ry="31" fill="#2aa7e0"/><path d="M252 129 l-5 8 h10Z" fill="#2aa7e0"/><ellipse cx="243" cy="86" rx="6" ry="9" fill="#fff" opacity=".6"/>`},
+    {id:"ice", name:"Παγωτό", vb:"190 160 90 110", svg:`<path d="M212 214 L240 214 L226 262Z" fill="#e0a85a" stroke="#855530" stroke-width="2"/><circle cx="217" cy="206" r="13" fill="#ff9ac8"/><circle cx="236" cy="206" r="13" fill="#fff3d6"/><circle cx="226" cy="192" r="13" fill="#8fe3b0"/><circle cx="226" cy="179" r="5" fill="#e63946"/>`},
+    {id:"bloom", name:"Λουλούδι", vb:"190 150 90 110", svg:`<path d="M222 250 Q226 214 232 188" stroke="#0e9f6e" stroke-width="5" fill="none"/><path d="M226 222 Q244 212 248 224 Q236 232 226 222Z" fill="#0e9f6e"/>`+[0,72,144,216,288].map(a=>`<circle cx="${(232+12*Math.cos(a*Math.PI/180)).toFixed(1)}" cy="${(180+12*Math.sin(a*Math.PI/180)).toFixed(1)}" r="9" fill="#ff4f9a"/>`).join("")+`<circle cx="232" cy="180" r="7" fill="#ffc93c"/>`}
+  ]},
+  {id:"bg", name:"Φόντο", none:false, items:[
+    {id:"jungle", name:"Ζούγκλα", sw:"linear-gradient(#8fe3b0,#0e9f6e)"},
+    {id:"pond", name:"Λιμνούλα", sw:"linear-gradient(#bfe9ff 0 55%,#2aa7e0 55%)"},
+    {id:"sunset", name:"Ηλιοβασίλεμα", sw:"linear-gradient(#ff7a1a,#ff4f9a 60%,#7a3cff)"},
+    {id:"party", name:"Πάρτι", sw:"repeating-conic-gradient(#ffc93c 0 20deg,#ff4f9a 20deg 40deg,#2aa7e0 40deg 60deg)"}
+  ]}
+];
+const cat = id => CATS.find(c => c.id === id);
+const item = (c, id) => { const k = cat(c); return k && k.items.find(i => i.id === id); };
+const part = (c, id, key="svg") => { const it = item(c, id); return it && it[key] ? it[key] : ""; };
+
+function capySVG(o){
+  const f = FURS[o.capy] || FURS.kapy;
+  return `<svg viewBox="0 0 300 340" role="img" aria-label="Καπυμπάρα ${f.name}">
+  <ellipse cx="150" cy="328" rx="110" ry="9" fill="#2b1a3d" opacity=".18"/>
+  ${part("outfit", o.outfit, "back")}
+  <ellipse cx="150" cy="250" rx="95" ry="80" fill="${f.fur}"/>
+  <ellipse cx="150" cy="268" rx="58" ry="52" fill="${f.muz}" opacity=".55"/>
+  ${part("outfit", o.outfit)}
+  <ellipse cx="86" cy="248" rx="17" ry="27" fill="${f.dark}" transform="rotate(14 86 248)"/>
+  <ellipse cx="214" cy="248" rx="17" ry="27" fill="${f.dark}" transform="rotate(-14 214 248)"/>
+  <ellipse cx="108" cy="322" rx="27" ry="12" fill="${f.dark}"/><ellipse cx="192" cy="322" rx="27" ry="12" fill="${f.dark}"/>
+  <circle cx="94" cy="70" r="15" fill="${f.dark}"/><circle cx="206" cy="70" r="15" fill="${f.dark}"/>
+  <circle cx="94" cy="71" r="7" fill="#f5a3b8"/><circle cx="206" cy="71" r="7" fill="#f5a3b8"/>
+  <rect x="80" y="60" width="140" height="132" rx="56" fill="${f.fur}"/>
+  <ellipse cx="150" cy="152" rx="50" ry="35" fill="${f.muz}"/>
+  <ellipse cx="150" cy="136" rx="17" ry="10" fill="${f.dark}"/>
+  <circle cx="143" cy="136" r="2.6" fill="#2b1a3d"/><circle cx="157" cy="136" r="2.6" fill="#2b1a3d"/>
+  <path d="M150 146 V157 M136 160 Q143 168 150 157 Q157 168 164 160" stroke="#2b1a3d" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <ellipse cx="100" cy="140" rx="10" ry="6" fill="#ff8fb0" opacity=".65"/><ellipse cx="200" cy="140" rx="10" ry="6" fill="#ff8fb0" opacity=".65"/>
+  <circle cx="112" cy="112" r="7" fill="#2b1a3d"/><circle cx="188" cy="112" r="7" fill="#2b1a3d"/>
+  <circle cx="114.500" cy="109.500" r="2.300" fill="#fff"/><circle cx="190.500" cy="109.500" r="2.300" fill="#fff"/>
+  <path d="M102 103 Q112 98 122 103 M178 103 Q188 98 198 103" stroke="${f.dark}" stroke-width="3" fill="none" stroke-linecap="round"/>
+  ${part("neck", o.neck)}${part("glasses", o.glasses)}${part("hat", o.hat)}${part("hand", o.hand)}
+  </svg>`;
+}
+
+/* ====== Κατάσταση παιχνιδιού ====== */
+const BLANK = {capy:"kapy", hat:"", glasses:"", neck:"", outfit:"", hand:"", bg:"jungle"};
+let outfit = {...BLANK}, activeTab = "hat";
+try { const s = JSON.parse(localStorage.getItem("capyOutfit") || "null"); if (s && typeof s === "object") for (const k in BLANK) if (typeof s[k] === "string" && (s[k] === "" ? cat(k).none !== false : item(k, s[k]))) outfit[k] = s[k]; } catch(e){}
+const save = () => { try { localStorage.setItem("capyOutfit", JSON.stringify(outfit)); } catch(e){} };
+
+const $ = id => document.getElementById(id);
+function drawStage(){ $("stage").innerHTML = capySVG(outfit); $("stage").dataset.bg = outfit.bg; }
+function thumb(c, it){
+  if (it.sw) return `<span class="sw" style="background:${it.sw}"></span>`;
+  if (it.fur) return `<svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="14" cy="14" r="8" fill="${it.fur.dark}"/><circle cx="46" cy="14" r="8" fill="${it.fur.dark}"/><rect x="8" y="10" width="44" height="44" rx="18" fill="${it.fur.fur}"/><ellipse cx="30" cy="40" rx="15" ry="10" fill="${it.fur.muz}"/><circle cx="20" cy="27" r="3" fill="#2b1a3d"/><circle cx="40" cy="27" r="3" fill="#2b1a3d"/><ellipse cx="30" cy="35" rx="5" ry="3" fill="${it.fur.dark}"/></svg>`;
+  return `<svg viewBox="${it.vb || c.vb}" aria-hidden="true">${it.back || ""}${it.svg}</svg>`;
+}
+function drawPicker(){
+  $("tabs").innerHTML = CATS.map(c => `<button type="button" class="tab" data-tab="${c.id}" aria-pressed="${c.id === activeTab}">${c.name}</button>`).join("");
+  const c = cat(activeTab);
+  const none = c.none === false ? "" : `<button type="button" class="item" data-item="" aria-pressed="${outfit[c.id] === ""}"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="12" fill="none" stroke="#5b4a6e" stroke-width="3"/><path d="M11.500 28.500 L28.500 11.500" stroke="#5b4a6e" stroke-width="3"/></svg>Τίποτα</button>`;
+  $("items").innerHTML = none + c.items.map(it => `<button type="button" class="item" data-item="${it.id}" aria-pressed="${outfit[c.id] === it.id}">${thumb(c, it)}${it.name}</button>`).join("");
+}
+$("tabs").addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (!b) return; activeTab = b.dataset.tab; drawPicker(); });
+$("items").addEventListener("click", e => { const b = e.target.closest("[data-item]"); if (!b) return; outfit[activeTab] = b.dataset.item; save(); drawStage(); drawPicker(); });
+$("randBtn").addEventListener("click", () => {
+  for (const c of CATS) { const pool = c.items.map(i => i.id); if (c.none !== false && Math.random() < .2) outfit[c.id] = ""; else outfit[c.id] = pool[Math.floor(Math.random() * pool.length)]; }
+  save(); drawStage(); drawPicker();
+});
+$("resetBtn").addEventListener("click", () => { outfit = {...BLANK}; save(); drawStage(); drawPicker(); });
+
+/* ====== Πλοήγηση ====== */
+const VIEWS = ["home", "syllogi", "paixnidi"];
+function show(){
+  const h = location.hash.replace("#", ""), v = VIEWS.includes(h) ? h : "home";
+  VIEWS.forEach(n => { $("v-" + n).hidden = n !== v; });
+  window.scrollTo(0, 0);
+}
+document.addEventListener("click", e => { const b = e.target.closest("[data-go]"); if (!b) return; location.hash = b.dataset.go; show(); });
+window.addEventListener("hashchange", show);
+
+/* ====== Φωτογραφία & φόρμα ====== */
+let photo = null, photoUrl = null;
+function setPhoto(file){
+  if (!file) return;
+  if (!file.type.startsWith("image/")) { fail("Αυτό το αρχείο δεν είναι φωτογραφία. Διάλεξε μια εικόνα."); return; }
+  photo = file;
+  if (photoUrl) URL.revokeObjectURL(photoUrl);
+  photoUrl = URL.createObjectURL(file);
+  const img = new Image(); img.alt = "Η φωτογραφία του άλμπουμ σου"; img.src = photoUrl;
+  $("shot").replaceChildren(img);
+  $("formErr").hidden = true;
+}
+function fail(msg){ $("formErr").textContent = msg; $("formErr").hidden = false; }
+["camInput", "libInput"].forEach(id => $(id).addEventListener("change", e => { setPhoto(e.target.files[0]); e.target.value = ""; }));
+$("entryForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const name = $("fName").value.trim(), contact = $("fContact").value.trim();
+  if (!photo) return fail("Πρόσθεσε πρώτα τη φωτογραφία του συμπληρωμένου άλμπουμ.");
+  if (!name) return fail("Γράψε το όνομά σου.");
+  if (!/^(\+?\d[\d\s]{9,14}|[^\s@]+@[^\s@]+\.[^\s@]+)$/.test(contact)) return fail("Γράψε ένα σωστό κινητό ή email, για να σε βρούμε αν κερδίσεις.");
+  if (!$("fConsent").checked) return fail("Τσέκαρε το κουτάκι της συγκατάθεσης για να συνεχίσεις.");
+  $("formErr").hidden = true;
+  const btn = $("submitBtn"); btn.disabled = true; btn.textContent = "Στέλνουμε…";
+  try {
+    await submitEntry({ photo, name, contact });
+    $("doneName").textContent = name;
+    $("entryForm").hidden = true; $("doneBox").hidden = false;
+    $("doneBox").scrollIntoView({ block: "center" });
+  } catch (err) {
+    fail("Η αποστολή δεν ολοκληρώθηκε. Έλεγξε τη σύνδεσή σου και δοκίμασε ξανά.");
+  } finally { btn.disabled = false; btn.textContent = "Στείλε τη συμμετοχή"; }
+});
+$("againBtn").addEventListener("click", () => {
+  photo = null; $("shot").innerHTML = "<span>Εδώ θα εμφανιστεί η φωτογραφία του άλμπουμ σου.<br>Φρόντισε να φαίνονται όλα τα αυτοκόλλητα.</span>";
+  $("doneBox").hidden = true; $("entryForm").hidden = false;
+});
+
+/* ====== Εκκίνηση ====== */
+$("winnersNum").textContent = CONFIG.winners;
+document.querySelectorAll(".winnersTxt").forEach(n => n.textContent = CONFIG.winners);
+$("drawNote").textContent = CONFIG.drawInfo;
+$("heroCapy").innerHTML = capySVG({capy:"kapy", hat:"orange", neck:"bow", hand:"bar", glasses:"", outfit:""});
+drawStage(); drawPicker(); show();
+</script>
+
+</body></html>
